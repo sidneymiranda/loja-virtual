@@ -1,6 +1,6 @@
 package com.github.sidneymiranda.lojavirtual.model;
 
-import com.github.sidneymiranda.lojavirtual.enums.AddressType;
+import com.github.sidneymiranda.lojavirtual.enums.ReceivableStatus;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -16,16 +16,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
-@SequenceGenerator(name = "seq_brand_product", sequenceName = "seq_brand_product", allocationSize = 1)
-public class Address implements Serializable {
+@SequenceGenerator(name = "seq_receivable", sequenceName = "seq_receivable", allocationSize = 1)
+public class Receivable implements Serializable {
 
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
@@ -34,24 +37,29 @@ public class Address implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     @Setter(AccessLevel.NONE)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_brand_product")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_receivable")
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "public_place")
-    private String publicPlace;
-
-    private String cep;
-    private String number;
-    private String complement;
-    private String district;
-    private String uf;
-    private String city;
-
-    @ManyToOne(targetEntity = Person.class)
-    @JoinColumn(name = "person_id", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
-    private Person person;
+    private String description;
 
     @Enumerated(EnumType.STRING)
-    private AddressType addressType;
+    private ReceivableStatus status;
+
+    @Temporal(TemporalType.DATE)
+    private Date endDate;
+
+    @Temporal(TemporalType.DATE)
+    private Date payDate;
+
+    private BigDecimal amount;
+
+    private BigDecimal discountAmount;
+
+    @ManyToOne(targetEntity = Person.class)
+    @JoinColumn(name = "person_id",
+            nullable = false,
+            foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
+    private Person person;
+
 }

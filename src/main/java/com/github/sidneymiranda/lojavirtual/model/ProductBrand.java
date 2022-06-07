@@ -21,6 +21,8 @@ import java.io.Serializable;
 @SequenceGenerator(name = "seq_brand_product", sequenceName = "seq_brand_product", allocationSize = 1, initialValue = 1)
 public class ProductBrand implements Serializable {
 
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     private static final long serialVersionUID = 1L;
 
     @Id

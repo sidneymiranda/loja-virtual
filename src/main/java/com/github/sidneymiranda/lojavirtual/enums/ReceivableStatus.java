@@ -1,13 +1,15 @@
 package com.github.sidneymiranda.lojavirtual.enums;
 
-public enum AddressType {
+public enum ReceivableStatus {
 
-    TO_CHARGE("To Charge"),
-    DELIVERY("Delivery");
+    CHARGE("Charge"),
+    EXPIRED("Expired"),
+    OPEN("Open"),
+    PAID_OFF("Paid off");
 
     private String description;
 
-    AddressType(String description) {
+    ReceivableStatus(String description) {
         this.description = description;
     }
 

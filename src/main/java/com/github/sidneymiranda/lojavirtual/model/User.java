@@ -33,6 +33,8 @@ import java.util.List;
 @SequenceGenerator(name = "seq_user", sequenceName = "seq_user", allocationSize = 1)
 public class User implements UserDetails {
 
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     private static final long serialVersionUID = 1L;
 
     @Id

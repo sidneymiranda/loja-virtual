@@ -25,6 +25,8 @@ import java.util.List;
 @SequenceGenerator(name = "seq_person", sequenceName = "seq_person", allocationSize = 1)
 public abstract class Person implements Serializable {
 
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -42,6 +44,6 @@ public abstract class Person implements Serializable {
     @EqualsAndHashCode.Exclude
     private String phone;
 
-    @OneToMany(mappedBy = "person", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "person", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Address> addresses;
 }

@@ -1,5 +1,6 @@
 package com.github.sidneymiranda.lojavirtual.model;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +18,8 @@ import java.util.Date;
 @Table(name = "physycal_person")
 public class PhysicalPerson extends Person {
 
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     private static final long serialVersionUID = 1L;
 
     @Column(nullable = false)

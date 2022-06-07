@@ -17,9 +17,9 @@ import java.io.Serializable;
 @Entity
 @Getter
 @Setter
-@Table(name = "product_category")
-@SequenceGenerator(name = "seq_product_category", sequenceName = "seq_product_category", allocationSize = 1)
-public class ProductCategory implements Serializable {
+@Table(name = "payment_method")
+@SequenceGenerator(name = "seq_payment_method", sequenceName = "seq_payment_method", allocationSize = 1, initialValue = 1)
+public class PaymentMethod implements Serializable {
 
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
@@ -28,7 +28,7 @@ public class ProductCategory implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     @Setter(AccessLevel.NONE)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_brand_product")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_payment_method")
     @Column(name = "id", nullable = false)
     private Long id;
 

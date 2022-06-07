@@ -1,5 +1,6 @@
 package com.github.sidneymiranda.lojavirtual.model;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +15,8 @@ import javax.persistence.Table;
 @Table(name = "legal_person")
 public class LegalPerson extends Person {
 
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     private static final long serialVersionUID = 1L;
 
     @Column(nullable = false)
