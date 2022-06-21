@@ -1,7 +1,6 @@
 package com.github.sidneymiranda.lojavirtual.model;
 
 import com.github.sidneymiranda.lojavirtual.enums.BillsStatus;
-import com.github.sidneymiranda.lojavirtual.enums.ReceivableStatus;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -17,7 +16,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
@@ -30,7 +28,7 @@ import java.util.Date;
 @Getter
 @Setter
 @SequenceGenerator(name = "seq_bills", sequenceName = "seq_bills", allocationSize = 1)
-public class Bills implements Serializable {
+public class BillToPay implements Serializable {
 
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)

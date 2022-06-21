@@ -15,7 +15,7 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
-@Table(name = "physycal_person")
+@Table(name = "physical_person")
 public class PhysicalPerson extends Person {
 
     @Getter(AccessLevel.NONE)
