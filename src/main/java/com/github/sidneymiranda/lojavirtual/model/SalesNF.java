@@ -5,16 +5,13 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Getter
 @Setter
+@Table(name = "sales_nf")
 @SequenceGenerator(name = "seq_sales_invoice", sequenceName = "seq_sales_invoice", allocationSize = 1)
 public class SalesNF implements Serializable {
 
@@ -32,7 +29,14 @@ public class SalesNF implements Serializable {
     private String series;
     private String type;
 
-//  utilizar algum padrão de projeto
+    @Column(columnDefinition = "text")
     private String xml;
+
+    @Column(columnDefinition = "text")
     private String pdf;
+
+    @OneToOne
+    @JoinColumn(name = "order_id", nullable = false,
+            foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "order_fk"))
+    private Order order;
 }

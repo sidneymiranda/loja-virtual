@@ -25,7 +25,7 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
-@Table(name = "product_brand")
+@Table(name = "purchase_nf")
 @SequenceGenerator(name = "seq_purchase_nf", sequenceName = "seq_purchase_nf", allocationSize = 1, initialValue = 1)
 public class PurchaseNF implements Serializable {
 
