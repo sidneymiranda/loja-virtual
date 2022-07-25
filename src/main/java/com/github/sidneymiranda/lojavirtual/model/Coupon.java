@@ -31,15 +31,16 @@ public class Coupon implements Serializable {
     @EqualsAndHashCode.Include
     @Setter(AccessLevel.NONE)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_coupon")
-    @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(nullable = false)
     private String code;
 
     private BigDecimal discountAmount;
 
     private BigDecimal discountPercentage;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date couponValidity;
 

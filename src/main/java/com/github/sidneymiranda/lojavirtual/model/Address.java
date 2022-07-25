@@ -34,23 +34,36 @@ public class Address implements Serializable {
     @EqualsAndHashCode.Include
     @Setter(AccessLevel.NONE)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_address")
-    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "street")
+    @Column(nullable = false)
     private String street;
 
+    @Column(nullable = false)
     private String cep;
+
+    @Column(nullable = false)
     private String number;
+
     private String complement;
+
+    @Column(nullable = false)
     private String district;
+
+    @Column(nullable = false)
     private String uf;
+
+    @Column(nullable = false)
     private String city;
 
     @ManyToOne(targetEntity = Person.class)
-    @JoinColumn(name = "person_id", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
+    @JoinColumn(
+            name = "person_id",
+            nullable = false,
+            foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
     private Person person;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private AddressType addressType;
 }

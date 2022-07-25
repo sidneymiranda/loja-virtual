@@ -29,7 +29,7 @@ public class ProductCategory implements Serializable {
     @EqualsAndHashCode.Include
     @Setter(AccessLevel.NONE)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_brand_product")
-    @Column(name = "id", nullable = false)
+    @Column(nullable = false)
     private Long id;
 
     @Column(nullable = false)

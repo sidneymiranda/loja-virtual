@@ -18,7 +18,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Table(name = "product_brand")
-@SequenceGenerator(name = "seq_brand_product", sequenceName = "seq_brand_product", allocationSize = 1, initialValue = 1)
+@SequenceGenerator(name = "seq_brand_product", sequenceName = "seq_brand_product", allocationSize = 1)
 public class ProductBrand implements Serializable {
 
     @Getter(AccessLevel.NONE)
@@ -29,7 +29,7 @@ public class ProductBrand implements Serializable {
     @EqualsAndHashCode.Include
     @Setter(AccessLevel.NONE)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_brand_product")
-    @Column(name = "id", nullable = false)
+    @Column(nullable = false)
     private Long id;
 
     @Column(nullable = false)

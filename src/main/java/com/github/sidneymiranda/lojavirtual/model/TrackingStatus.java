@@ -34,7 +34,9 @@ public class TrackingStatus implements Serializable {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false,
+    @JoinColumn(
+            name = "order_id",
+            nullable = false,
             foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "order_fk"))
     private Order order;
 

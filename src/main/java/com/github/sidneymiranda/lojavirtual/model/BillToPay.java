@@ -38,20 +38,23 @@ public class BillToPay implements Serializable {
     @EqualsAndHashCode.Include
     @Setter(AccessLevel.NONE)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_bills")
-    @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(nullable = false)
     private String description;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private BillsStatus status;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
-    private Date endDate;
+    private Date dueDate;
 
     @Temporal(TemporalType.DATE)
     private Date payDate;
 
+    @Column(nullable = false)
     private BigDecimal amount;
 
     private BigDecimal discountAmount;

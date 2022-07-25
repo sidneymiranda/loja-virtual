@@ -7,21 +7,7 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.ConstraintMode;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -43,11 +29,25 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_user")
     private Long id;
 
+    @Column(nullable = false)
     private String login;
+
+    @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
-    private Date currentDatePassword;
+    private Date register;
+
+    @Temporal(TemporalType.DATE)
+    private Date updated;
+
+    @ManyToOne
+    @JoinColumn(
+            name = "person_id",
+            nullable = false,
+            foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
+    private Person person;
 
     @OneToMany
     @JoinTable(

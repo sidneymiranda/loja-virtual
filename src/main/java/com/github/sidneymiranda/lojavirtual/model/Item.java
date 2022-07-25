@@ -11,7 +11,6 @@ import java.io.Serializable;
 @Entity
 @Getter
 @Setter
-@Table(name = "item")
 @SequenceGenerator(name = "seq_item", sequenceName = "seq_item", allocationSize = 1)
 public class Item implements Serializable {
 
@@ -25,15 +24,20 @@ public class Item implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_item")
     private Long id;
 
+    @Column(nullable = false)
     private Integer quantity;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false,
+    @JoinColumn(
+            name = "product_id",
+            nullable = false,
             foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "product_fk"))
     private Product product;
 
     @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false,
+    @JoinColumn(
+            name = "order_id",
+            nullable = false,
             foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "order_fk"))
     private Order order;
 }

@@ -26,17 +26,24 @@ public class ProductRate implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(nullable = false)
     private Integer grade;
 
+    @Column(nullable = false)
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "person_id", nullable = false,
+    @JoinColumn(
+            name = "person_id",
+            nullable = false,
             foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
     private Person person;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "product_fk"))
+    @JoinColumn(
+            name = "product_id",
+            nullable = false,
+            foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "product_fk"))
     private Product product;
 
 

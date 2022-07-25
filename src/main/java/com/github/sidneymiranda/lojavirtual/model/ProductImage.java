@@ -33,17 +33,19 @@ public class ProductImage implements Serializable {
     @EqualsAndHashCode.Include
     @Setter(AccessLevel.NONE)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_product_image")
-    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(columnDefinition = "text")
+    @Column(columnDefinition = "text", nullable = false)
     private String thumbnail;
 
-    @Column(columnDefinition = "text")
+    @Column(columnDefinition = "text", nullable = false)
     private String image;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "product_fk"))
+    @JoinColumn(
+            name = "product_id",
+            nullable = false,
+            foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "product_fk"))
     private Product product;
 
 }

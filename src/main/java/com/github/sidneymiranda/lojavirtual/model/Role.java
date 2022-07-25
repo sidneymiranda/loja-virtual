@@ -23,7 +23,7 @@ public class Role implements GrantedAuthority {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_role")
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
 
     @Column(nullable = false)

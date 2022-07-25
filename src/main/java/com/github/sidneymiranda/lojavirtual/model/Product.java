@@ -5,12 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -31,23 +26,43 @@ public class Product implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(nullable = false)
     private String unitType;
 
-    @Column(columnDefinition = "text")
+    @Column(nullable = false)
     private String name;
 
+    private Boolean active = Boolean.TRUE;
+
+    @Column(columnDefinition = "text", length = 2000, nullable = false)
     private String description;
 
 //     NotaItemProduto - falta criar
+
+     @Column(nullable = false)
      private Double weight;
+
+     @Column(nullable = false)
      private Double height;
+
+     @Column(nullable = false)
      private Double width;
+
+     @Column(nullable = false)
      private Double depth;
-     private BigDecimal saleValue = BigDecimal.ZERO;
+
+     @Column(nullable = false)
+     private BigDecimal saleValue;
+
+     @Column(nullable = false)
      private Integer quantity = 0;
+
      private Boolean stockAlert = Boolean.FALSE;
-     private Integer stockAlertQuantity;
+
+     private Integer stockAlertQuantity = 0;
+
      private Integer numberClicks;
+
      private String youtubeLink;
 
 }

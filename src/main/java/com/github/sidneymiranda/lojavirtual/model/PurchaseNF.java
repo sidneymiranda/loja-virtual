@@ -43,13 +43,20 @@ public class PurchaseNF implements Serializable {
     @Column(nullable = false)
     @EqualsAndHashCode.Exclude
     private String number;
+
+    @Column(nullable = false)
     private String series;
     private String observation;
 
+    @Column(nullable = false)
     private BigDecimal amount;
+
     private BigDecimal discount;
+
+    @Column(nullable = false)
     private BigDecimal icms;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date buyDate;
 

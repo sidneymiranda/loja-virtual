@@ -41,23 +41,28 @@ public class Receivable implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(nullable = false)
     private String description;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private ReceivableStatus status;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
     @Temporal(TemporalType.DATE)
     private Date payDate;
 
+    @Column(nullable = false)
     private BigDecimal amount;
 
     private BigDecimal discountAmount;
 
     @ManyToOne(targetEntity = Person.class)
-    @JoinColumn(name = "person_id",
+    @JoinColumn(
+            name = "person_id",
             nullable = false,
             foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
     private Person person;

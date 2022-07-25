@@ -5,16 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -35,12 +26,15 @@ public abstract class Person implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
     private Long id;
 
+    @Column(nullable = false)
     @EqualsAndHashCode.Exclude
     private String name;
 
+    @Column(nullable = false)
     @EqualsAndHashCode.Exclude
     private String email;
 
+    @Column(nullable = false)
     @EqualsAndHashCode.Exclude
     private String phone;
 
