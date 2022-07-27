@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "pdv.jwt.expiration",
+      "type": "java.lang.String",
+      "description": "Description for pdv.jwt.expiration."
+  }
+] }
