@@ -30,7 +30,7 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(nullable = false)
-    private String login;
+    private String username;
 
     @Column(nullable = false)
     private String password;
@@ -41,17 +41,9 @@ public class User implements UserDetails {
 
     @Temporal(TemporalType.DATE)
     private Date updated;
-
-    @ManyToOne
-    @JoinColumn(
-            name = "person_id",
-            nullable = false,
-            foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
-    private Person person;
-
     @OneToMany
     @JoinTable(
-            name = "role_users",
+            name = "user_roles",
             uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "role_id"}, name = "uniq_role_access"),
             joinColumns =
                 @JoinColumn(
@@ -82,7 +74,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.login;
+        return this.username;
     }
 
     @Override

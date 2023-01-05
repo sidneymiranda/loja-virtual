@@ -40,4 +40,11 @@ public abstract class Person implements Serializable {
 
     @OneToMany(mappedBy = "person", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Address> addresses;
+
+    @ManyToOne
+    @JoinColumn(
+            name = "user_id",
+            nullable = false,
+            foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "person_fk"))
+    private User user;
 }

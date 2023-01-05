@@ -1,4 +1,4 @@
-package com.github.sidneymiranda.lojavirtual.service;
+package com.github.sidneymiranda.lojavirtual.service.impl;
 
 import com.github.sidneymiranda.lojavirtual.dto.request.RoleRequestDTO;
 import com.github.sidneymiranda.lojavirtual.dto.response.RoleResponseDTO;
@@ -31,8 +31,6 @@ public class RoleService {
     }
 
     public RoleResponseDTO save(RoleRequestDTO roleRequestDTO) {
-        if(roleRequestDTO.getAuthority() == null)
-            throw new RuntimeException("Campo authority não pode ser nulo.");
         Role roleResponse = roleRepository.save(mapperToEntity(roleRequestDTO));
         return mapperToDTO(roleResponse);
     }
